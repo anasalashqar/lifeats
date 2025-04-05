@@ -12,12 +12,132 @@ class MealsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Meal::insert([
-           
+        \App\Models\Meal::insert(
+            [
+                // Breakfast
+                [
+                    'name' => 'Almond Butter Banana Toast',
+                    'description' => 'Whole grain toast with almond butter and banana slices.',
+                    'calories' => 320,
+                    'protein' => 10,
+                    'carbs' => 30,
+                    'fats' => 18,
+                    'image_url' => 'https://data.thefeedfeed.com/recommended/post_4121640.jpeg',
+                    'category_id' => 1,
+                    'subscription_id' => 3
+                ],
+                [
+                    'name' => 'Vegan Breakfast Burrito',
+                    'description' => 'Tofu scramble, black beans, and veggies in a whole wheat wrap.',
+                    'calories' => 400,
+                    'protein' => 18,
+                    'carbs' => 42,
+                    'fats' => 15,
+                    'image_url' => 'https://rainbowplantlife.com/wp-content/uploads/2021/05/vegan-breakfast-burritos-stacked-1-of-1.jpg',
+                    'category_id' => 1,
+                    'subscription_id' => 5
+                ],
+
+                // Lunch
+                [
+                    'name' => 'Chicken Fajita Bowl',
+                    'description' => 'Sautéed chicken with peppers and onions over brown rice.',
+                    'calories' => 520,
+                    'protein' => 35,
+                    'carbs' => 40,
+                    'fats' => 20,
+                    'image_url' => 'https://th.bing.com/th/id/R.fd6e2f683581052df3992f9e56c8e78e?rik=jrARAEKa7crZ5Q&riu=http%3a%2f%2fimages.media-allrecipes.com%2fuserphotos%2f960x960%2f5633964.jpg&ehk=YPlwE23csi6coozpHOen7No21w847%2bn7eRuB%2b%2bTUUIs%3d&risl=&pid=ImgRaw&r=0',
+                    'category_id' => 2,
+                    'subscription_id' => 1
+                ],
+                [
+                    'name' => 'Lentil & Sweet Potato Curry',
+                    'description' => 'Spiced lentils and sweet potatoes in a creamy coconut curry sauce.',
+                    'calories' => 480,
+                    'protein' => 19,
+                    'carbs' => 50,
+                    'fats' => 18,
+                    'image_url' => 'https://cdn77-s3.lazycatkitchen.com/wp-content/uploads/2020/01/sweet-potato-red-lentil-curry-close-up-800x1200.jpg',
+                    'category_id' => 2,
+                    'subscription_id' => 5
+                ],
+
+                // Dinner
+                [
+                    'name' => 'Turkey Meatballs & Zoodles',
+                    'description' => 'Lean turkey meatballs served over zucchini noodles with tomato basil sauce.',
+                    'calories' => 540,
+                    'protein' => 35,
+                    'carbs' => 18,
+                    'fats' => 30,
+                    'image_url' => 'https://th.bing.com/th/id/R.333b025549bbfd495aded39a3aa24bf6?rik=GAGF3EaKREamew&pid=ImgRaw&r=0',
+                    'category_id' => 3,
+                    'subscription_id' => 2
+                ],
+                [
+                    'name' => 'Vegetable Coconut Stir Fry',
+                    'description' => 'Mixed vegetables sautéed in coconut oil with tamari and garlic.',
+                    'calories' => 460,
+                    'protein' => 10,
+                    'carbs' => 35,
+                    'fats' => 28,
+                    'image_url' => 'https://ohmyveggies.com/wp-content/uploads/2022/02/Closeup-of-a-noodle-stir-fry-with-vegetables.jpg',
+                    'category_id' => 3,
+                    'subscription_id' => 4
+                ],
+
+                // Snacks
+                [
+                    'name' => 'Mixed Nuts & Berries',
+                    'description' => 'Trail mix of almonds, cashews, dried cranberries, and blueberries.',
+                    'calories' => 210,
+                    'protein' => 6,
+                    'carbs' => 20,
+                    'fats' => 14,
+                    'image_url' => 'https://cdn.shopify.com/s/files/1/0549/0596/2681/collections/dry-nuts-and-berries-mix-PPWKNRP_622x.jpg?v=1624462855',
+                    'category_id' => 4,
+                    'subscription_id' => 3
+                ],
+                [
+                    'name' => 'Celery Sticks with Peanut Butter',
+                    'description' => 'Crunchy celery served with natural peanut butter dip.',
+                    'calories' => 160,
+                    'protein' => 6,
+                    'carbs' => 8,
+                    'fats' => 12,
+                    'image_url' => 'https://www.creativefabrica.com/wp-content/uploads/2023/01/28/Celery-Sticks-With-Peanut-Butter-59261763-1.png',
+                    'category_id' => 4,
+                    'subscription_id' => 4
+                ],
+
+                // Salads
+                [
+                    'name' => 'Spicy Chickpea Salad',
+                    'description' => 'Roasted chickpeas with cucumbers, red onion, and tahini dressing.',
+                    'calories' => 400,
+                    'protein' => 14,
+                    'carbs' => 30,
+                    'fats' => 20,
+                    'image_url' => 'https://th.bing.com/th/id/R.600e3e4adbe70b100f4f795fa1d4fdc8?rik=kDO%2fKDhuskbs2Q&riu=http%3a%2f%2fdaisiesandpie.co.uk%2fwp-content%2fuploads%2f2014%2f11%2fSpicy-Chickpea-Salad.jpg&ehk=ru7HYGhbbnwgYREfMiQXYKdUS5NaqfIzuG2y%2f4SXGuQ%3d&risl=&pid=ImgRaw&r=0',
+                    'category_id' => 5,
+                    'subscription_id' => 2
+                ],
+                [
+                    'name' => 'Avocado & Tomato Salad',
+                    'description' => 'Diced avocado, cherry tomatoes, red onion, and lime vinaigrette.',
+                    'calories' => 350,
+                    'protein' => 5,
+                    'carbs' => 18,
+                    'fats' => 28,
+                    'image_url' => 'https://thestayathomechef.com/wp-content/uploads/2020/12/Tomato-Avocado-Salad-3.jpg',
+                    'category_id' => 5,
+                    'subscription_id' => 1
+                ],
+                // Breakfast
                 // Breakfast
                 [
                     'name' => 'Spinach & Feta Omelette',
-                    'description' => 'Fluffy omelette with sautéed spinach and crumbled feta cheese.',
+                    'description' => 'Fluffy omelette with sautÃ©ed spinach and crumbled feta cheese.',
                     'calories' => 310,
                     'protein' => 20,
                     'carbs' => 6,
@@ -133,9 +253,246 @@ class MealsTableSeeder extends Seeder
                     'category_id' => 5,
                     'subscription_id' => 1
                 ],
+                [
+                    'name' => 'Greek Yogurt Parfait',
+                    'description' => 'Layered Greek yogurt, granola, and mixed berries.',
+                    'calories' => 300,
+                    'protein' => 15,
+                    'carbs' => 35,
+                    'fats' => 9,
+                    'image_url' => 'https://images.pexels.com/photos/414262/pexels-photo-414262.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                    'category_id' => 1, // Breakfast
+                    'subscription_id' => 1
+                ],
+                [
+                    'name' => 'Oatmeal with Banana & Cinnamon',
+                    'description' => 'Steel-cut oats topped with banana slices and cinnamon.',
+                    'calories' => 340,
+                    'protein' => 9,
+                    'carbs' => 45,
+                    'fats' => 10,
+                    'image_url' => 'https://images.pexels.com/photos/28766049/pexels-photo-28766049/free-photo-of-healthy-oatmeal-breakfast-with-fresh-blueberries.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load',
+                    'category_id' => 1,
+                    'subscription_id' => 2
+                ],
+
+                // Lunch
+                [
+                    'name' => 'Grilled Chicken Bowl',
+                    'description' => 'Grilled chicken with brown rice, broccoli, and tahini sauce.',
+                    'calories' => 500,
+                    'protein' => 40,
+                    'carbs' => 45,
+                    'fats' => 15,
+                    'image_url' => 'https://images.pexels.com/photos/5713761/pexels-photo-5713761.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                    'category_id' => 2,
+                    'subscription_id' => 1
+                ],
+                [
+                    'name' => 'Quinoa & Chickpea Salad',
+                    'description' => 'Refreshing salad with quinoa, chickpeas, cherry tomatoes, and parsley.',
+                    'calories' => 420,
+                    'protein' => 18,
+                    'carbs' => 48,
+                    'fats' => 14,
+                    'image_url' => 'https://via.placeholder.com/150https://images.pexels.com/photos/17597408/pexels-photo-17597408/free-photo-of-a-bowl-with-a-healthy-salad.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                    'category_id' => 2,
+                    'subscription_id' => 3
+                ],
+
+                // Dinner
+                [
+                    'name' => 'Lemon Herb Baked Salmon',
+                    'description' => 'Salmon fillet baked with herbs, served with steamed veggies.',
+                    'calories' => 580,
+                    'protein' => 38,
+                    'carbs' => 20,
+                    'fats' => 30,
+                    'image_url' => 'https://media.istockphoto.com/id/1214416454/photo/barbecued-salmon-fried-potatoes-and-vegetables-on-wooden-background.jpg?s=1024x1024&w=is&k=20&c=x4tp5_8xM2Vl_udvpt9hVXslwL6_6IlQjpi2w2Co-NQ=',
+                    'category_id' => 3,
+                    'subscription_id' => 2
+                ],
+                [
+                    'name' => 'Tofu Stir-Fry with Rice Noodles',
+                    'description' => 'Marinated tofu stir-fried with vegetables and gluten-free noodles.',
+                    'calories' => 490,
+                    'protein' => 22,
+                    'carbs' => 50,
+                    'fats' => 18,
+                    'image_url' => 'https://images.pexels.com/photos/30506288/pexels-photo-30506288/free-photo-of-delicious-noodle-dish-with-herbs-and-chopsticks.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load',
+                    'category_id' => 3,
+                    'subscription_id' => 5
+                ],
+
+                // Snacks
+                [
+                    'name' => 'Peanut Butter Energy Balls',
+                    'description' => 'Rolled oats, peanut butter, honey, and flaxseed energy bites.',
+                    'calories' => 180,
+                    'protein' => 6,
+                    'carbs' => 15,
+                    'fats' => 10,
+                    'image_url' => 'https://media.istockphoto.com/id/1069747868/photo/healthy-organic-energy-granola-bolls-with-nuts-cacao-oats-and-raisins-vegetarian-sweet-bites.jpg?s=612x612&w=0&k=20&c=kK2lJi-eutEMb7tyLQ3EFYyuK4UMF4oIW0vewoXgYZQ=',
+                    'category_id' => 4,
+                    'subscription_id' => 1
+                ],
+                [
+                    'name' => 'Hummus & Veggie Sticks',
+                    'description' => 'Classic hummus served with cucumber, carrots, and bell pepper sticks.',
+                    'calories' => 150,
+                    'protein' => 5,
+                    'carbs' => 12,
+                    'fats' => 8,
+                    'image_url' => 'https://images.pexels.com/photos/5852261/pexels-photo-5852261.jpeg?auto=compress&cs=tinysrgb&w=600',
+                    'category_id' => 4,
+                    'subscription_id' => 3
+                ],
+
+                // Salads
+                [
+                    'name' => 'Kale Caesar Salad',
+                    'description' => 'Chopped kale with light Caesar dressing, parmesan, and sunflower seeds.',
+                    'calories' => 350,
+                    'protein' => 10,
+                    'carbs' => 20,
+                    'fats' => 22,
+                    'image_url' => 'https://media.istockphoto.com/id/153830105/photo/caesar-salad.jpg?s=612x612&w=0&k=20&c=9LTrXzhR5Fi5kVT91rzsuYd-rb7Ighgm7lt60VAfgUg=',
+                    'category_id' => 5,
+                    'subscription_id' => 2
+                ],
+                [
+                    'name' => 'Mediterranean Lentil Salad',
+                    'description' => 'Lentils, red onion, cucumbers, olive oil, lemon juice, and mint.',
+                    'calories' => 380,
+                    'protein' => 16,
+                    'carbs' => 35,
+                    'fats' => 14,
+                    'image_url' => 'https://images.pexels.com/photos/1059905/pexels-photo-1059905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                    'category_id' => 5,
+                    'subscription_id' => 4
+                ],
+                // Breakfast
+                [
+                    'name' => 'Protein Pancakes',
+                    'description' => 'Fluffy pancakes made with oats and whey protein, topped with berries.',
+                    'calories' => 380,
+                    'protein' => 25,
+                    'carbs' => 40,
+                    'fats' => 12,
+                    'image_url' => 'https://images.immediate.co.uk/production/volatile/sites/30/2021/02/Protein-pancakes-b64bd40.jpg',
+                    'category_id' => 1,
+                    'subscription_id' => 3
+                ],
+                [
+                    'name' => 'Mushroom & Spinach Scramble',
+                    'description' => 'Scrambled eggs with sautéed mushrooms and spinach.',
+                    'calories' => 290,
+                    'protein' => 20,
+                    'carbs' => 6,
+                    'fats' => 20,
+                    'image_url' => 'https://thecharmingdetroiter.com/wp-content/uploads/2016/01/scrambled-egg-toasts-with-mushrooms-cherry-tomatoes-and-spinach-pesto-3.jpg',
+                    'category_id' => 1,
+                    'subscription_id' => 5
+                ],
+
+                // Lunch
+                [
+                    'name' => 'Grilled Shrimp Tacos',
+                    'description' => 'Corn tortillas filled with grilled shrimp, slaw, and avocado crema.',
+                    'calories' => 510,
+                    'protein' => 30,
+                    'carbs' => 38,
+                    'fats' => 24,
+                    'image_url' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnMDnoxG3dM1h3826eJP3V3DBwtG4n7hrODQ&s',
+                    'category_id' => 2,
+                    'subscription_id' => 4
+                ],
+                [
+                    'name' => 'Chicken Shawarma Bowl',
+                    'description' => 'Spiced grilled chicken with brown rice, pickled onions, and tahini.',
+                    'calories' => 560,
+                    'protein' => 38,
+                    'carbs' => 45,
+                    'fats' => 22,
+                    'image_url' => 'https://palestineinadish.com/wp-content/uploads/2023/07/Shawarma-bowl-photo3-scaled.jpg',
+                    'category_id' => 2,
+                    'subscription_id' => 2
+                ],
+
+                // Dinner
+                [
+                    'name' => 'Beef Stir-Fry with Veggies',
+                    'description' => 'Lean beef sautéed with bell peppers and snap peas in garlic sauce.',
+                    'calories' => 600,
+                    'protein' => 40,
+                    'carbs' => 30,
+                    'fats' => 28,
+                    'image_url' => 'https://www.twopeasandtheirpod.com/wp-content/uploads/2020/03/Beef-Stir-Fry-6.jpg',
+                    'category_id' => 3,
+                    'subscription_id' => 1
+                ],
+                [
+                    'name' => 'Eggplant Parmesan Bake',
+                    'description' => 'Baked eggplant layers with tomato sauce and light mozzarella.',
+                    'calories' => 470,
+                    'protein' => 22,
+                    'carbs' => 40,
+                    'fats' => 22,
+                    'image_url' => 'https://asimplepalate.com/wp-content/uploads/2021/03/eggplant-parmesan-1.jpg',
+                    'category_id' => 3,
+                    'subscription_id' => 5
+                ],
+
+                // Snacks
+                [
+                    'name' => 'Boiled Eggs with Sea Salt',
+                    'description' => 'Two organic boiled eggs sprinkled with Himalayan salt.',
+                    'calories' => 140,
+                    'protein' => 13,
+                    'carbs' => 1,
+                    'fats' => 9,
+                    'image_url' => 'https://nakanoflavors.com/media/1891/sea-salt-and-vinegar-hard-boiled-eggs_thumb.jpg',
+                    'category_id' => 4,
+                    'subscription_id' => 1
+                ],
+                [
+                    'name' => 'Greek Yogurt & Honey Dip',
+                    'description' => 'Thick yogurt with a swirl of raw honey and crushed walnuts.',
+                    'calories' => 180,
+                    'protein' => 10,
+                    'carbs' => 15,
+                    'fats' => 8,
+                    'image_url' => 'https://www.lindsaypleskot.com/wp-content/uploads/2024/05/The-Best-Honey-Cinnamon-Greek-Yogurt-Fruit-Dip-easy-high-protein-snack-HERO.jpg',
+                    'category_id' => 4,
+                    'subscription_id' => 2
+                ],
+
+                // Saflads
+                [
+                    'name' => 'Arugula & Beet Salad',
+                    'description' => 'Fresh arugula with roasted beets, goat cheese, and walnuts.',
+                    'calories' => 390,
+                    'protein' => 9,
+                    'carbs' => 22,
+                    'fats' => 28,
+                    'image_url' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmENplvyj8SLQP22VZeyLnN1Vg6eA4s2CNhg&s',
+                    'category_id' => 5,
+                    'subscription_id' => 3
+                ],
+                [
+                    'name' => 'Asian Slaw Salad',
+                    'description' => 'Shredded cabbage, carrots, green onions, sesame-ginger dressing.',
+                    'calories' => 330,
+                    'protein' => 6,
+                    'carbs' => 28,
+                    'fats' => 18,
+                    'image_url' => 'https://www.feastingathome.com/wp-content/uploads/2018/09/asian-slaw-100-2.jpg',
+                    'category_id' => 5,
+                    'subscription_id' => 4
+                ],
 
 
-           
-        ]);
+            ]
+        );
     }
 }

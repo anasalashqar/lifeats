@@ -10,32 +10,14 @@ use App\Http\Controllers\UserController;
 // روح الى api.php
 
 // Route::apiResource('products', ProductsController::class);
-/* use Illuminate\Support\Facades\Session;
+// use Illuminate\Support\Facades\Session;
 
-Route::get('/set-session', function () {
-    Session::put('user', 'Toqa');
-    return response()->json(['message' => 'Session set!']);
+use Illuminate\Support\Facades\Auth;
+use App\Models\User; 
+
+Route::get('/login', function () {
+    $user = User::find(1); 
+    Auth::login($user);
+    return redirect('/profile
+    '); 
 });
-
-Route::get('/get-session', function () {
-    return response()->json(['session_data' => session()->all()]);
-}); */
-
-// Route::get('/register', [RegisteredUserController::class, 'showRegistrationForm'])->name('register');
-// Route::get('/login', [AuthenticatedSessionController::class, 'showLoginForm'])->name('login');
-
-// Route::get('/profile', [UserProfileController::class, 'showProfile'])->name('profile')->middleware('auth');
-
-Route::get("/", function () {
-    return view('front.Homepage.index');
-});
-
-Route::get("/meals", function () {
-    return view('front.Meals.php.meal');
-});
-
-Route::get("/meal-details/{id}", function () {
-    return view('front.Meals.php.meal-details');
-});
-
-
