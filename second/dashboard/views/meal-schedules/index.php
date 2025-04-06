@@ -97,6 +97,29 @@
 
             tbody.appendChild(tr);
           });
+
+      function filterDataByDate(keyword) {
+        if (!keyword) return [...scheduleData];
+
+        const cleanKeyword = keyword.replace(/\D/g, ''); // Remove non-digits
+        return scheduleData.filter(schedule => {
+          const dateParts = schedule.date.split('-'); // e.g. "2025-04-04" → ["2025", "04", "04"]
+          const monthDay = dateParts[1] + dateParts[2]; // "0404"
+
+          return monthDay.includes(cleanKeyword);
+        });
+      }
+
+      // Fetch and render data
+      spinnerOverlay.style.display = 'block';
+      fetch('http://127.0.0.1:8000/api/admin/meal-schedules')
+        .then(res => res.json())
+        .then(data => {
+          scheduleData = data;
+          filteredData = [...scheduleData];
+          renderTablePage(filteredData, currentPage);
+          renderPaginationDots(filteredData.length);
+
         })
         .catch(err => {
           console.error('Failed to load meal schedules:', err);
