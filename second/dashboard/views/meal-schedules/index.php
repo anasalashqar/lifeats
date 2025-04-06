@@ -9,25 +9,7 @@
 
   <!-- Favicon -->
   <link rel="icon" href="assets/img/wrist-watch.ico" type="image/x-icon" />
-  <!-- Dot Style -->
-  <style>
-    .pagination-dot {
-      width: 12px;
-      height: 12px;
-      background-color: black;
-      border-radius: 50%;
-      display: inline-block;
-      margin-bottom: 10px;
-      cursor: pointer;
-      opacity: 0.4;
-      transition: opacity 0.3s ease;
-    }
 
-    .pagination-dot.active,
-    .pagination-dot:hover {
-      opacity: 1;
-    }
-  </style>
   <!-- Fonts and icons -->
   <?php require_once "views/layouts/components/fonts.html"; ?>
 </head>
@@ -51,11 +33,6 @@
       <div class="container">
         <div class="page-inner">
           <h1>Meal Schedules</h1>
-          <!-- Search Form -->
-          <form id="meal-schedule-form" class="form-inline my-2 d-flex gap-2">
-            <input type="text" name="keyword" class="form-control" placeholder="Search by date (e.g. 2025-04-06)">
-            <button type="submit" class="btn btn-primary">Search</button>
-          </form>
 
           <table class="table table-striped">
             <thead class="table-dark">
@@ -63,6 +40,7 @@
                 <th>ID</th>
                 <th>Date</th>
                 <th>User</th>
+                <th>Subscription</th>
                 <th>Locked</th>
                 <th>Meals</th>
                 <th>Actions</th>
@@ -74,7 +52,7 @@
           </table>
         </div>
       </div>
-      <div id="paginationDots" class="d-flex justify-content-center mt-3 gap-2"></div>
+
 
       <!-- Footer -->
       <?php require_once "views/layouts/components/spinner.html"; ?>
@@ -89,37 +67,25 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const spinnerOverlay = document.getElementById('spinner-overlay');
-      const tbody = document.getElementById('meals-table-body');
-      const paginationDots = document.getElementById('paginationDots');
-      const searchForm = document.getElementById('meal-schedule-form');
-      const searchInput = searchForm.querySelector('input[name="keyword"]');
+      spinnerOverlay.style.display = 'block';
+      fetch('http://127.0.0.1:8000/api/admin/meal-schedules')
+        .then(res => res.json())
+        .then(data => {
 
-      const pageSize = 7;
-      let currentPage = 0;
-      let scheduleData = [];
-      let filteredData = [];
+          const tbody = document.getElementById('meals-table-body');
+          tbody.innerHTML = '';
 
-      function renderTablePage(data, page) {
-        const start = page * pageSize;
-        const end = start + pageSize;
-        const paginated = data.slice(start, end);
+          data.forEach(schedule => {
+            const user = schedule.user_subscription.user;
+            const subscriptionName = schedule.user_subscription.subscription?.name || 'N/A';
+            const meals = schedule.selections.map(sel => sel.meal.name).join(', ');
 
-        tbody.innerHTML = '';
-        if (paginated.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="7" class="text-center">No matching records found.</td></tr>';
-          return;
-        }
-
-        paginated.forEach(schedule => {
-          const user = schedule.user_subscription.user;
-          const subscriptionName = schedule.user_subscription.subscription?.name || 'N/A';
-          const meals = schedule.selections.map(sel => sel.meal.name).join(', ');
-
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
           <td>${schedule.id}</td>
           <td>${schedule.date}</td>
           <td>${user.name}</td>
+          <td>${subscriptionName}</td>
           <td><span class="badge bg-${schedule.locked ? 'danger' : 'success'}">${schedule.locked ? 'Locked' : 'Unlocked'}</span></td>
           <td>${meals}</td>
           <td>
@@ -128,30 +94,9 @@
             </a>
           </td>
         `;
-          tbody.appendChild(tr);
-        });
-      }
 
-      function renderPaginationDots(dataLength) {
-        const totalPages = Math.ceil(dataLength / pageSize);
-        paginationDots.innerHTML = '';
-
-        for (let i = 0; i < totalPages; i++) {
-          const dot = document.createElement('span');
-          dot.className = 'pagination-dot';
-          dot.dataset.page = i;
-          if (i === currentPage) dot.classList.add('active');
-          paginationDots.appendChild(dot);
-        }
-
-        document.querySelectorAll('.pagination-dot').forEach(dot => {
-          dot.addEventListener('click', () => {
-            currentPage = parseInt(dot.dataset.page);
-            renderTablePage(filteredData, currentPage);
-            renderPaginationDots(filteredData.length);
+            tbody.appendChild(tr);
           });
-        });
-      }
 
       function filterDataByDate(keyword) {
         if (!keyword) return [...scheduleData];
@@ -174,24 +119,14 @@
           filteredData = [...scheduleData];
           renderTablePage(filteredData, currentPage);
           renderPaginationDots(filteredData.length);
+
         })
         .catch(err => {
           console.error('Failed to load meal schedules:', err);
-          tbody.innerHTML = '<tr><td colspan="7">Error loading data.</td></tr>';
-        })
-        .finally(() => {
-          spinnerOverlay.style.display = 'none';
+          document.getElementById('meals-table-body').innerHTML = '<tr><td colspan="7">Error loading data.</td></tr>';
+        }).finally(() => {
+          spinnerOverlay.style.display = 'none'; // Hide spinner
         });
-
-      // Handle date search
-      searchForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const keyword = searchInput.value.trim();
-        filteredData = filterDataByDate(keyword);
-        currentPage = 0;
-        renderTablePage(filteredData, currentPage);
-        renderPaginationDots(filteredData.length);
-      });
     });
   </script>
 </body>
