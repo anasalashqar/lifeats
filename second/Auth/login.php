@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(to right, #ff691c, #ff9d57);
+            background: linear-gradient(to right, #ffe3cc, #ffd8b0);
+            /* Softer orange gradient */
             font-family: 'Quicksand', sans-serif;
             height: 100vh;
             display: flex;
@@ -122,20 +123,6 @@
     <script>
         const form = document.getElementById('loginForm');
         const messageDiv = document.getElementById('message');
-
-        // Validate email format
-        // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        // if (!emailPattern.test(email)) {
-        //     messageDiv.textContent = 'Please enter a valid email address.';
-        //     return;
-        // }
-
-        // // Validate password length
-        // if (password.length < 6) {
-        //     messageDiv.textContent = 'Password must be at least 6 characters long.';
-        //     return;
-        // }
-
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
