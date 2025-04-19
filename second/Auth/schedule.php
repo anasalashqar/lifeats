@@ -142,8 +142,6 @@
     <ul class="nav nav-tabs" id="scheduleTabs" role="tablist"></ul>
     <div class="tab-content" id="scheduleTabContent"></div>
   </div>
-  <div id="paginationDots" class="d-flex justify-content-center mt-4 gap-2"></div>
-
   <?php
   require_once __DIR__ . "/../Homepage/includes/footer.php";
   ?>
